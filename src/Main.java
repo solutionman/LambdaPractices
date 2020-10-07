@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.function.Predicate;
@@ -100,6 +101,13 @@ public class Main {
         Predicate<String> containsF = s -> s.contains("f");
         System.out.println( "Does " + person1.getName() + " contains f ? " + containsF.test(person1.getName()));
         System.out.println( "Does " + person2.getName() + " contains f ? " + containsF.test(person2.getName()));
+
+        // Consumer - so something with input, but do not return anything
+        Consumer<String> printUpperCase = s -> System.out.println(s.toUpperCase());
+        printUpperCase.accept( person1.getName() );
+
+        Consumer<String> printLowerCase = s -> System.out.println(s.toLowerCase());
+        printUpperCase.andThen( printLowerCase ).accept( person2.getName() );
 
     }
 }
