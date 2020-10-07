@@ -72,7 +72,7 @@ public class Main {
         // streams: count persons with even id
         long count = 0;
         for(Person person : persons){
-            if( person.getId() % 2 == 0 ){
+            if( person.getId() % 2 == 0 && person.getName().equals("second") ){
                 count++;
             }
         }
@@ -81,11 +81,13 @@ public class Main {
         // the same, using streams
         Stream<Person> stream = persons.stream();
         stream = stream.filter( person -> person.getId() % 2 == 0 );
+        stream = stream.filter( person -> person.getName().equals("second") );
         long countWithStream = stream.count();
         System.out.println( countWithStream );
 
         // short version with streams
-        long countWithStreams = persons.stream().filter( person -> person.getId() % 2 == 0 ).count();
+        long countWithStreams = persons.stream().filter( person -> person.getId() % 2 == 0 )
+                .filter( person -> person.getName().equals("second") ).count();
         System.out.println( countWithStreams );
 
     }
