@@ -3,6 +3,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args){
@@ -89,6 +90,16 @@ public class Main {
         long countWithStreams = persons.stream().filter( person -> person.getId() % 2 == 0 )
                 .filter( person -> person.getName().equals("second") ).count();
         System.out.println( countWithStreams );
+
+        // Predicate - returns true or false
+        Predicate<Integer> negative = i -> i < 0;
+        System.out.println( "Is 1 negative? " + negative.test(1) );
+        System.out.println( "Is -1 negative? " + negative.test(-1) );
+        System.out.println( "Is 0 negative? " + negative.test(0) );
+        // the same with string
+        Predicate<String> containsF = s -> s.contains("f");
+        System.out.println( "Does " + person1.getName() + " contains f ? " + containsF.test(person1.getName()));
+        System.out.println( "Does " + person2.getName() + " contains f ? " + containsF.test(person2.getName()));
 
     }
 }
