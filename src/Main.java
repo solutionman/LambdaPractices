@@ -69,7 +69,7 @@ public class Main {
         }
 
         
-        // streams: count persons with even id
+        // streams: count persons with even id and name equals "second"
         long count = 0;
         for(Person person : persons){
             if( person.getId() % 2 == 0 && person.getName().equals("second") ){
