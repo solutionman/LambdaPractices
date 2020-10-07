@@ -40,5 +40,18 @@ public class Main {
         int result3 = compareShort.compare(person1, person2);
         System.out.println(result3);
 
+
+        // Create anonymous class from interface and print message
+        ForAnonymousClass anonymousClass = new ForAnonymousClass() {
+            @Override
+            public void doSomething() {
+                System.out.println("Message from anonymous class");
+            }
+        };
+        anonymousClass.doSomething();
+        // do the same with lambda
+        ForAnonymousClass anonymousClassLambda = () -> System.out.println("Message from anonymous class created with lambda");
+        anonymousClassLambda.doSomething();
+
     }
 }
