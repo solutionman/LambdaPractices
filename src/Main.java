@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args){
@@ -66,5 +67,18 @@ public class Main {
         for(String name: names){
             System.out.println(name);
         }
+
+        
+        // streams: count persons with even id
+        long count = 0;
+        for(Person person : persons){
+            if( person.getId() % 2 == 0 ){
+                count++;
+            }
+        }
+        System.out.println(count);
+        // the same, using streams
+        long countWithStreams = persons.stream().filter(person -> person.getId() % 2 == 0).count();
+        System.out.println(countWithStreams);
     }
 }
