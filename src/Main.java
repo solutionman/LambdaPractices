@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args){
@@ -53,5 +56,15 @@ public class Main {
         ForAnonymousClass anonymousClassLambda = () -> System.out.println("Message from anonymous class created with lambda");
         anonymousClassLambda.doSomething();
 
+        
+        List<Person> persons = new ArrayList<>();
+        persons.add(person1);
+        persons.add(person2);
+        List<String> names = persons.stream()
+                .map(s->s.getName().toUpperCase())
+                .collect(Collectors.toList());
+        for(String name: names){
+            System.out.println(name);
+        }
     }
 }
