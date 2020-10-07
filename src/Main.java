@@ -62,10 +62,10 @@ public class Main {
         persons.add(person1);
         persons.add(person2);
         List<String> names = persons.stream()
-                .map(s->s.getName().toUpperCase())
-                .collect(Collectors.toList());
-        for(String name: names){
-            System.out.println(name);
+                .map( s -> s.getName().toUpperCase() )
+                .collect( Collectors.toList() );
+        for( String name: names ){
+            System.out.println( name );
         }
 
         
@@ -76,9 +76,17 @@ public class Main {
                 count++;
             }
         }
-        System.out.println(count);
+        System.out.println( count );
+
         // the same, using streams
-        long countWithStreams = persons.stream().filter(person -> person.getId() % 2 == 0).count();
-        System.out.println(countWithStreams);
+        Stream<Person> stream = persons.stream();
+        stream = stream.filter( person -> person.getId() % 2 == 0 );
+        long countWithStream = stream.count();
+        System.out.println( countWithStream );
+
+        // short version with streams
+        long countWithStreams = persons.stream().filter( person -> person.getId() % 2 == 0 ).count();
+        System.out.println( countWithStreams );
+
     }
 }
