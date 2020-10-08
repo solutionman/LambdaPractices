@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.function.Predicate;
@@ -109,5 +110,14 @@ public class Main {
         Consumer<String> printLowerCase = s -> System.out.println(s.toLowerCase());
         printUpperCase.andThen( printLowerCase ).accept( person2.getName() );
 
+        // Supplier return result without input
+        Supplier<String> stringSupplier = () -> person1.getName().toUpperCase();
+        System.out.println( stringSupplier.get() );
+
+        MultipleFilterWithPredicates multipleFilterWithPredicates = new MultipleFilterWithPredicates();
+        List<Person> filteredPersonsList = multipleFilterWithPredicates.get(1L, "first", persons);
+        for( Person person : filteredPersonsList ){
+            System.out.println( "id: " + person.getId() + " name: " + person.getName());
+        }
     }
 }
