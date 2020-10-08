@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 public class MultipleFilterWithPredicates {
 
     public List<Person> get( Long id, String name, List<Person> personList ) {
-        Predicate<Person> ccypairPredicate = d -> id.equals(d.getId());
-        Predicate<Person> dateTimePredicate = d -> name.equals(d.getName());
-        List<Person> persons = personList.stream().filter( ccypairPredicate.and(dateTimePredicate) )
+        Predicate<Person> idPredicate = d -> id.equals(d.getId());
+        Predicate<Person> namePredicate = d -> name.equals(d.getName());
+        List<Person> persons = personList.stream().filter( idPredicate.and(namePredicate) )
                 .collect(Collectors.toList());
         return persons;
     }
