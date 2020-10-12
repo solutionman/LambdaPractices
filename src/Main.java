@@ -10,6 +10,9 @@ import java.util.function.Predicate;
 public class Main {
     public static void main(String[] args){
 
+        Thread t = new Thread ( () -> System.out.println("Hello Lambda") );
+        t.start();
+
         Runnable runnable = new Runnable(){
             @Override
             public void run(){
